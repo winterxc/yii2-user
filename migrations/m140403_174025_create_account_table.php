@@ -24,6 +24,7 @@ class m140403_174025_create_account_table extends Migration
                 $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
                 break;
             case 'pgsql':
+            case 'sqlite':
                 $tableOptions = null;
                 break;
             default:
@@ -39,7 +40,7 @@ class m140403_174025_create_account_table extends Migration
         ], $tableOptions);
 
         $this->createIndex('account_unique', '{{%account}}', ['provider', 'client_id'], true);
-        $this->addForeignKey('fk_user_account', '{{%account}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'RESTRICT');
+        //$this->addForeignKey('fk_user_account', '{{%account}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'RESTRICT');
     }
 
     public function down()

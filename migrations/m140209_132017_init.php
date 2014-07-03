@@ -23,6 +23,7 @@ class m140209_132017_init extends \yii\db\Migration
                 $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
                 break;
             case 'pgsql':
+            case 'sqlite':
                 $tableOptions = null;
                 break;
             default:
@@ -78,7 +79,7 @@ class m140209_132017_init extends \yii\db\Migration
             'bio'            => Schema::TYPE_TEXT
         ], $tableOptions);
 
-        $this->addForeignKey('fk_user_profile', '{{%profile}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'RESTRICT');
+        //$this->addForeignKey('fk_user_profile', '{{%profile}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'RESTRICT');
     }
 
     public function down()
